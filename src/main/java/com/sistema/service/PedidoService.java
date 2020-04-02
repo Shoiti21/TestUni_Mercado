@@ -18,12 +18,15 @@ public class PedidoService {
 	public void adicionar(Item item) {
 		pedidos.add(item);
 	}
+	public List<Item> getPedidos() {
+		return pedidos;
+	}
 	public double ValorTotal() {
 		return pedidos.stream().mapToDouble(i -> i.getValor()*i.getUnidade()).sum();
 	}
 	public void comprar() {
-		repPedido.guardar();
-		email.enviar();
+		repPedido.guardar(pedidos);
+		email.enviar(pedidos);
 	}
 
 }

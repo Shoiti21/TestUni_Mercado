@@ -46,8 +46,9 @@ public class TestPedido {
 	@Test
 	public void deveEmitirNotaFiscalEmail() throws Exception {
 		pedidos.comprar();
-		Mockito.verify(repPedido).guardar();
-		Mockito.verify(email).enviar();
+		
+		Mockito.verify(repPedido).guardar(pedidos.getPedidos());
+		Mockito.verify(email).enviar(pedidos.getPedidos());
 	}
 
 }
